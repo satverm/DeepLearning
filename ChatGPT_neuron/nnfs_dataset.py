@@ -15,7 +15,8 @@ from matplotlib import pyplot as plt
 print("print plots...")
 print(X,"\ny:\n", y)
 plt.scatter(X[:,0], X[:,1])
-plt.show() # somehow pydroid not showing plot¿
+plt.show() # somehow now it works after rearranging import statement for matplot
+
 
 plt.scatter(X[:,0], X[:,1], c=y, cmap="brg")
 plt.show()

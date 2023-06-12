@@ -38,7 +38,6 @@ print("\nlayer2 output after forward and taking layer 1 output as input:\n",laye
 
 print("\nlayer2 weights:\n",layer2.weights)
 
-test_pt = input("Press y to draw neuron: ")
 
 ### code for visual representation
 class NeuronModel:
@@ -52,8 +51,11 @@ class NeuronModel:
 	
 	root = tk.Tk()
 	root.title("Neuron")
-	n_canvas = tk.Canvas
+	n_canvas = tk.Canvas()
 	n_canvas.create_oval(10,10)
+	
+test_pt = input("Press y to draw neuron: ")
+
 	
 neuron_mdl = NeuronModel(1, 1,1)
 	

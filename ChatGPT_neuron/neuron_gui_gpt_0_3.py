@@ -19,6 +19,7 @@ class Neuron:
 
     def calculate_activation(self):
         pass
+        # the line below creates problem
         #self.activation = max(0, self.input * self.weight + self.bias)
 
 

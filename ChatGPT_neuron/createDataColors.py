@@ -1,4 +1,4 @@
-# cteate a data set for use
+# cteate a data set for use, some error
 #https://cs231n.github.io-neural-network-case-study/
 
 import numpy as np

@@ -1,4 +1,4 @@
-# cteate a data set for use
+# cteate a data set for use, working
 #https://cs231n.github.io-neural-network-case-study/
 
 import numpy as np
@@ -19,12 +19,12 @@ import  matplotlib
 from matplotlib import pyplot as plt # now it works
 
 print("print plots...")
-X, y = create_data(2000,4)
+X, y = create_data(100,3)
 #print(X,"\ny:\n", y)
 #plt.scatter(X[:, 0], X[:, 1])
 #plt.show()
 
-plt.scatter(X[:,0], X[:,1], c=y, cmap="brg") #different colors not showing 
+plt.scatter(X[:,0], X[:,1], c=y, cmap="brg") #different colors now showing :)
 plt.show()
 print("Plot done")
 

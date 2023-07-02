@@ -9,7 +9,7 @@
 import numpy as np
 import nnfs
 from nnfs_dataset import  spiral_data
-
+nnfs.init()
 #np.random.seed(0)  # to have same random values
 # X is taken as the batch of input vaues, here we are taking 3 batches
 X =  [[1, 2, 3, 2.5 ],  # 4 inputs in each batch taken here
@@ -28,21 +28,31 @@ class Layer_Dense:
 		self.output = np.dot(inputs, self.weights) + self.biases
 		
 class Activation_ReLU:
-		def forward( self, inputs):
+		def forward(self, inputs):
 			self.output= np.maximum(0, inputs)
+			
+class Activation_Softmax:
+		def forward(self, inputs):
+			exp_values = np.exp(inputs - np.max(inputs, axis=1, keepdims= True))
+			probabilities = exp_values / np.sum(exp_values, axis=1, keepdims= True)
+			self.output = probabilities
 		
-layer1 = Layer_Dense(2,5) # 1st argumnet is the number of inputs in each batch, 2nd is the number of neurons desired in layer one
+layer1 = Layer_Dense(2,3) # 1st argumnet is the number of inputs in each batch, 2nd is the number of neurons desired in layer one
 layer1.forward(X)
-print(layer1.output)
+#print("Layer1 output:\n", layer1.output)
 activation1 = Activation_ReLU()
 
 activation1.forward(layer1.output)
-print(activation1.output)
-layer2 = Layer_Dense(5,1) # 1st argument  is the outputs from the first layer which would be equal to the neurons in the 1st layer, 2nd argument is the neurons desired in second layer
+#print("Activation1 output:\n", activation1.output)
+layer2 = Layer_Dense(3,3) # 1st argument  is the outputs from the first layer which would be equal to the neurons in the 1st layer, 2nd argument is the neurons desired in second layer
+layer2.forward(activation1.output)
+activation2 = Activation_Softmax()
+activation2.forward(layer2.output)
+#probabilities = activation2.output
+print("probabilities:\n", activation2.output[:5])
+#layer1.forward(X)
 
-layer1.forward(X)
-
-layer2.forward(layer1.output)
+#layer2.forward(layer1.output)
 
 
 ## Testing Outputs
